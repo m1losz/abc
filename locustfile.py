@@ -1,6 +1,8 @@
-from locust import HttpUser, task
+from locust import HttpUser, task, constant
 
 class HelloWorldUser(HttpUser):
+    wait_time = constant(1)
+
     @task
     def hello_world(self):
         self.client.get("https://api-microservices.sfportal.com/_/healthz")
